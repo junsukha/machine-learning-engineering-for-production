@@ -126,8 +126,15 @@ docker pull deeplearningai/mlepc1w1-ugl:jupyternb
  
 ### 2. Running a container out of the image:
 
-Images can also be thought of as the blueprints for containers, which are the actual instances of the software running. To run a container using the image you just pulled, double check that you are currently on the `week1-ungraded-lab` directory and use this command:
+Images can also be thought of as the blueprints for containers, which are the actual instances of the software running. To run a container using the image you just pulled, double check that you are currently on the `week1-ungraded-lab` directory and use this command (second one is wrong version):
+
 ```bash
+# Correct version
+docker run -it --rm -p 8888:8888 -p 8008:8008 --user root -e CHOWN_HOME=yes -v $(pwd):/home/jovyan/work deeplearningai/mlepc1w1-ugl:jupyternb
+```
+
+```bash
+# Wrong version
 docker run -it --rm -p 8888:8888 -p 8000:8000 --mount type=bind,source="$(pwd)",target=/home/jovyan/work deeplearningai/mlepc1w1-ugl:jupyternb
 ```
  
